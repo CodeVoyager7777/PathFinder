@@ -61,12 +61,14 @@ class SearchRequest(BaseModel):
 # ---------------------------------------------------------------------------
 
 @app.get("/health", tags=["Meta"])
+@app.get("/api/health", tags=["Meta"])
 def health():
     """Simple liveness check."""
     return {"status": "ok", "message": "PathFinder API is running"}
 
 
 @app.get("/graph", tags=["Graph"])
+@app.get("/api/graph", tags=["Graph"])
 def get_graph():
     """
     Return the full campus graph: all nodes (with coordinates and labels)
@@ -95,6 +97,7 @@ def get_graph():
 
 
 @app.post("/search", tags=["Search"])
+@app.post("/api/search", tags=["Search"])
 def search(req: SearchRequest):
     """
     Run A* from `start` to `end` and return the full step-by-step trace.
