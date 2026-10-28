@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Global Resets ──────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden; /* prevent body scroll; panels scroll internally */
+}
+
+/* ─── Custom thin scrollbar ──────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.22); }
+
+/* ─── Glass card utility ─────────────────────────────────────────── */
+@layer components {
+  .glass {
+    @apply bg-white/[0.04] backdrop-blur-md border border-white/[0.08] rounded-2xl;
+  }
+  .glass-sm {
+    @apply bg-white/[0.05] backdrop-blur border border-white/[0.10] rounded-xl;
+  }
+}
+
+/* ─── SVG transition helper ──────────────────────────────────────── */
+.node-circle {
+  transition: fill 0.4s ease, stroke 0.4s ease, stroke-width 0.3s ease;
+}
+.node-glow {
+  transition: opacity 0.4s ease, r 0.4s ease;
+}
+.edge-line {
+  transition: stroke 0.4s ease, stroke-width 0.3s ease, opacity 0.3s ease;
+}
